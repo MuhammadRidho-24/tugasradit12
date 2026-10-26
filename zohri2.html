@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102b80">
+    <title>Lalu Muhammad Zohri — Sang Juara</title>
+    <style>
+        :root {
+            --navy: #102b80;
+            --red: #c8202b;
+            --ink: #171923;
+            --muted: #666b78;
+            --paper: #f5f4f1;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 28px;
+            display: grid;
+            place-items: center;
+            color: var(--ink);
+            background: #e1e2e5;
+            font-family: Inter, "Segoe UI", Arial, sans-serif;
+        }
+
+        .page {
+            width: min(1120px, 100%);
+            min-height: 680px;
+            display: grid;
+            grid-template-columns: 1.06fr .94fr;
+            overflow: hidden;
+            background: var(--paper);
+            box-shadow: 0 24px 70px #1113;
+        }
+
+        .photo-panel {
+            position: relative;
+            min-height: 680px;
+            overflow: hidden;
+            background: #b8a66b;
+        }
+
+        .photo-panel::after {
+            position: absolute;
+            inset: 45% 0 0;
+            content: "";
+            background: linear-gradient(transparent, #080b18b8);
+            pointer-events: none;
+        }
+
+        .photo-panel img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            inset: 0;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .photo-caption {
+            position: absolute;
+            z-index: 1;
+            right: 34px;
+            bottom: 32px;
+            left: 34px;
+            color: white;
+        }
+
+        .photo-caption span {
+            display: inline-block;
+            margin-bottom: 12px;
+            padding: 7px 11px;
+            background: var(--red);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        .photo-caption h2 {
+            max-width: 430px;
+            margin: 0;
+            font-size: clamp(34px, 5vw, 58px);
+            font-weight: 950;
+            line-height: .94;
+            letter-spacing: -.055em;
+            text-transform: uppercase;
+        }
+
+        .photo-caption p { margin: 12px 0 0; color: #f1f1f1; font-size: 14px; }
+
+        .profile {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: clamp(32px, 6vw, 72px);
+            isolation: isolate;
+        }
+
+        .profile::before {
+            position: absolute;
+            z-index: -1;
+            top: 42px;
+            right: 36px;
+            width: 130px;
+            height: 130px;
+            border: 16px solid #c8202b12;
+            border-radius: 50%;
+            content: "";
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 0 18px;
+            color: var(--navy);
+            font-size: 11px;
+            font-weight: 850;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before { width: 24px; height: 3px; background: var(--red); content: ""; }
+
+        h1 {
+            margin: 0;
+            color: var(--navy);
+            font-size: clamp(36px, 4.4vw, 54px);
+            font-weight: 950;
+            line-height: .98;
+            letter-spacing: -.055em;
+        }
+
+        .subtitle {
+            margin: 14px 0 24px;
+            color: var(--red);
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: .02em;
+        }
+
+        .description {
+            margin: 0;
+            color: #424651;
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+        .quote {
+            margin: 26px 0;
+            padding: 14px 0 14px 17px;
+            border-left: 4px solid var(--red);
+            color: var(--ink);
+            font-size: 17px;
+            font-style: italic;
+            font-weight: 750;
+            line-height: 1.45;
+        }
+
+        .highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 0 0 28px;
+        }
+
+        .highlight {
+            padding: 14px;
+            background: #e9eaf0;
+            border-top: 3px solid var(--navy);
+        }
+
+        .highlight strong {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--navy);
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        .highlight span { color: #555a66; font-size: 12px; line-height: 1.35; }
+
+        .page-nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            margin-top: auto;
+        }
+
+        .button {
+            display: inline-flex;
+            min-height: 44px;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 0 17px;
+            background: var(--navy);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: transform .2s ease, background .2s ease;
+        }
+
+        .button:hover { background: #193ba2; transform: translateY(-2px); }
+        .button.secondary { background: transparent; color: var(--navy); border: 1px solid #102b8040; }
+        .button.secondary:hover { background: #102b800c; }
+
+        @media (max-width: 760px) {
+            body { padding: 14px; }
+            .page { grid-template-columns: 1fr; }
+            .photo-panel { min-height: 440px; }
+            .photo-caption { right: 24px; bottom: 24px; left: 24px; }
+            .profile { padding: 38px 26px 30px; }
+            .profile::before { top: 18px; right: 15px; }
+        }
+
+        @media (max-width: 420px) {
+            body { padding: 0; }
+            .page { min-height: 100vh; }
+            .photo-panel { min-height: 360px; }
+            .profile { padding: 32px 20px 24px; }
+            .highlights { gap: 8px; }
+            .highlight { padding: 11px; }
+            .description { font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <section class="photo-panel" aria-label="Foto kemenangan Zohri">
+            <img src="z.jpg" alt="Lalu Muhammad Zohri mengangkat bendera Indonesia setelah meraih kemenangan">
+            <div class="photo-caption">
+                <span>Momen bersejarah</span>
+                <h2>Juara dunia<br>U-20 2018</h2>
+                <p>Tampere, Finlandia • 100 meter putra</p>
+            </div>
+        </section>
+
+        <article class="profile">
+            <p class="eyebrow">Profil atlet • Indonesia</p>
+            <h1>Lalu<br>Muhammad<br>Zohri</h1>
+            <p class="subtitle">Sprinter kebanggaan Indonesia</p>
+            <p class="description">
+                Lalu Muhammad Zohri adalah pelari cepat asal Lombok Utara, Nusa Tenggara Barat. Namanya dikenal dunia setelah memenangkan nomor 100 meter putra pada Kejuaraan Dunia Atletik U-20 di Tampere, Finlandia, pada 2018. Ia menjadi atlet Indonesia pertama yang meraih gelar juara dunia pada kejuaraan tersebut.
+            </p>
+            <blockquote class="quote">Dari Lombok ke panggung dunia — sebuah kemenangan yang menginspirasi generasi berikutnya.</blockquote>
+            <div class="highlights" aria-label="Fakta singkat">
+                <div class="highlight"><strong>10,18 detik</strong><span>Catatan waktu kemenangan final 100 meter U-20</span></div>
+                <div class="highlight"><strong>2018</strong><span>Juara dunia U-20 di Tampere, Finlandia</span></div>
+            </div>
+            <nav class="page-nav" aria-label="Navigasi halaman">
+                <a class="button secondary" href="zohri.html">← Kembali ke infografik</a>
+                <a class="button" href="zohri3.html">Tonton video kemenangan →</a>
+            </nav>
+        </article>
+    </main>
+</body>
+</html>
